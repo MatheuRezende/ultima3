@@ -1,12 +1,11 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+WORKDIR /backend
 
-COPY backend/ /app
-COPY frontend/ /app/frontend
+COPY backend/ /backend
+COPY frontend/ /backend/frontend
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 10000
-
 CMD ["python", "app.py"]
+
