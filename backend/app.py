@@ -1,20 +1,20 @@
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, send_from_directory
 import mysql.connector
 import os
 
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
 
-# Rota principal da página inicial
+# ✅ Serve a página principal (index.html)
 @app.route('/')
-def home():
+def index():
     return app.send_static_file('index.html')
 
-# Rota de imagens já criada
+# ✅ Serve imagens
 @app.route('/img/<path:filename>')
 def get_image(filename):
     return send_from_directory('../frontend/img', filename)
 
-# Rota de cadastro
+# ✅ Cadastro de usuário
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
     data = request.get_json()
@@ -36,5 +36,6 @@ def cadastrar():
 
     return jsonify({"mensagem": "Usuário cadastrado com sucesso!"})
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000)
+
