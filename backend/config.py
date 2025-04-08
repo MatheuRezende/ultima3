@@ -1,0 +1,1 @@
+# Arquivo opcional para configurações futuras
