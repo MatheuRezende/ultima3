@@ -2,20 +2,19 @@ from flask import Flask, request, jsonify, send_from_directory
 import mysql.connector
 import os
 
+
 app = Flask(__name__, static_folder='frontend', static_url_path='')
 
-
-# ✅ Serve a página principal (index.html)
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
 
-# ✅ Serve imagens
+
 @app.route('/img/<path:filename>')
 def get_image(filename):
    return send_from_directory('frontend/img', filename)
 
-# ✅ Cadastro de usuário
+
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
     data = request.get_json()
